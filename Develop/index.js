@@ -2,8 +2,8 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 
 
+
 const questions = [
-inquirer.prompt([
     {
         type:"input",
         name:"username",
@@ -29,13 +29,13 @@ inquirer.prompt([
         type:"input",
         name:"depend",
         message:"What command should be run to install dependencies?",
-        default:["npm i"],
+        default:"npm i",
     },
     {
-        type:"type",
+        type:"input",
         name:"test",
         message:"What command should be run to run tests?",
-        default:["npm test"]
+        default:"npm test"
     },
     {
         type:"input",
@@ -47,15 +47,26 @@ inquirer.prompt([
         name:"contrib",
         message:"What does the user need to know about contributing to the repo?"
     },
-])
 
 ];
 
+
+
 function writeToFile(fileName, data) {
+     fs.writeFile(fileName, JSON.stringify(data, null, '\t'), function(err) {
+         
+        if (err) {
+            return console.log(err);
+        }
+        console.log(data);
+     }) 
 }
 
 function init() {
-
+    inquirer.prompt(questions)
+        .then(function(data) {
+            writeToFile("newone.md", data);
+        })
 }
 
 init();
