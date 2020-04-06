@@ -1,5 +1,8 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const generateMarkdown = require("./utils/generateMarkdown");
+//const api = require("./utils/api")
+//const dotenv = require("dotenv").config();
 
 
 
@@ -11,13 +14,13 @@ const questions = [
     },
     {
         type:"input",
-        name:"pname",
-        message:"What is your project's name?"
+        name:"title",
+        message:"What is your project's title?"
     },
     {
         type:"input",
         name:"desc",
-        message:"Pleae write a short description of your project."
+        message:"Please write a short description of your project."
     },
     {
         type:"list",
@@ -53,20 +56,22 @@ const questions = [
 
 
 function writeToFile(fileName, data) {
-     fs.writeFile(fileName, JSON.stringify(data, null, '\t'), function(err) {
-         
+     fs.writeFile(fileName, data, function(err) {
         if (err) {
             return console.log(err);
         }
-        console.log(data);
      }) 
 }
 
 function init() {
     inquirer.prompt(questions)
         .then(function(data) {
-            writeToFile("newone.md", data);
+            //api(data)
+            const md = generateMarkdown(data);
+            writeToFile("newone.md", md);
+            console.log(data)
         })
+        
 }
 
 init();
