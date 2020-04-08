@@ -2,7 +2,7 @@
 function generateMarkdown(data,dta) {
   return ` # ${data.title}
   ![GitHub license](https://img.shields.io/badge/license-${data.license}-green.svg)
-  <github link> 
+  
 
 
 ## Description
@@ -17,8 +17,6 @@ function generateMarkdown(data,dta) {
 * [Usage](#usage)
 
 * [License](#license)
-
-* [Badges](#badges)
 
 * [Contributing](#contributing)
 
