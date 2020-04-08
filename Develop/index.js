@@ -1,9 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown");
-//const api = require("./utils/api")
-//const dotenv = require("dotenv").config();
-
+const axios = require("axios");
 
 
 const questions = [
@@ -26,7 +24,7 @@ const questions = [
         type:"list",
         name:"license",
         message:"What kind of license should your project have?",
-        choices:["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3", "None"]
+        choices:["MIT", "APACHE_2.0", "GPL_3.0", "BSD_3", "None"]
     },
     {
         type:"input",
@@ -53,26 +51,41 @@ const questions = [
 
 ];
 
-
-
 function writeToFile(fileName, data) {
-     fs.writeFile(fileName, data, function(err) {
+    fs.writeFile(fileName, data, function(err) {
         if (err) {
             return console.log(err);
         }
      }) 
+     console.log("Write file ended!");
 }
+
+var dta = [];
 
 function init() {
     inquirer.prompt(questions)
         .then(function(data) {
-            //api(data)
-            const md = generateMarkdown(data);
-            writeToFile("newone.md", md);
-            console.log(data)
-        })
-        
+            api.getUser(data.username)
+            setTimeout(function(){
+                const md = generateMarkdown(data, dta);
+                console.log("Write to file started!");
+            writeToFile("README.md", md);
+            },500);
+        })    
 }
 
-init();
 
+
+const api = {
+    getUser(username) {
+      const queryUrl = `https://api.github.com/users/${username}`;
+  
+      axios.get(queryUrl).then(function(res) {
+
+        dta.push(res.data.avatar_url);
+      }); 
+    }
+};
+
+
+init();

@@ -1,13 +1,14 @@
-const api = require("./api")
 
-function generateMarkdown(data) {
+function generateMarkdown(data,dta) {
   return ` # ${data.title}
-  <badge> goes here
-  <github link> goes here
+  ![GitHub license](https://img.shields.io/badge/license-${data.license}-green.svg)
+  <github link> 
+
 
 ## Description
   
   ${data.desc}
+
 
 ## Table of Contents
 
@@ -25,22 +26,24 @@ function generateMarkdown(data) {
 
 * [Questions](#questions)
   
+
 ## Installation
 
-  To install necessary dependencies, run the following command: ${data.depend}
-  
+  To install necessary dependencies, run the following command:
+
+  ${data.depend}
+
+
 ## Usage
 
   ${data.know}
   
+
 ## License
 
-  This project is licensed under the ${data.license}
+  This project is licensed under the ${data.license} license.
   
-## Badges
 
-  
-  
 ## Contributing
 
   ${data.contrib}
@@ -48,13 +51,16 @@ function generateMarkdown(data) {
 
 ## Tests
 
-  To run tests, run the following command: ${data.test}
+  To run tests, run the following command:
+  
+  ${data.test}
+
   
 ## Questions
 
-  <img> here
+  <img src="${dta}" alt="avatar" style="border-radius: 16px" width="30" />
 
-  If you have any questions about the repo, open an issue or contact ${data.username} directly at null.`;
+  If you have any questions about the repo, open an issue or contact [${data.username}](https://api.github.com/users/${data.username}) directly at null.`;
 }
 
 module.exports = generateMarkdown;
