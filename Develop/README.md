@@ -5,7 +5,7 @@
 
 ## Description
   
-  This project makes README files.
+  This project was intended for users who want to spend more time working on their code than writing a READDME file. This command-line application does just that by asking for some information and taking that information and generating a READEME file for the user.
 
 
 ## Table of Contents
@@ -32,7 +32,7 @@
 
 ## Usage
 
-  Not at the moment
+  This repo is pretty straight forward and not much is to be said.
   
 
 ## License
@@ -42,7 +42,7 @@
 
 ## Contributing
 
-  Nope
+  All contributions are appreciated and any information or ideas that might help make this generator better are more than welcomed. Thanks!
   
 
 ## Tests
@@ -56,4 +56,4 @@
 
   <img src="https://avatars0.githubusercontent.com/u/59717461?v=4" alt="avatar" style="border-radius: 16px" width="30" />
 
-  If you have any questions about the repo, open an issue or contact [alushi96](https://api.github.com/users/alushi96) directly at null.
+  If you have any questions about the repo, open an issue or contact [Alushi96](https://api.github.com/users/Alushi96) directly at null.
